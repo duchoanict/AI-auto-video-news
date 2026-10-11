@@ -25,7 +25,7 @@ export class OmniVoiceClient implements TtsClient {
           {
             model: "omnivoice",
             input: text,
-            voice: "clone:try_ai_lov3_female_news",
+            voice: "clone:try_ai_lov3_male_warm_news",
             language: "vi",
             response_format: "mp3",
             num_step: 16,
