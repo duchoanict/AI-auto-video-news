@@ -68,7 +68,7 @@ Cấu trúc bắt buộc:
     "metadata": {
         "title": "...",
         "source": { "url": "...", "domain": "...", "image": null },
-        "channel": "AI Coding"
+        "channel": "try.ai.lov3"
     },
     "voice": { "provider": "omnivoice", "speed": 1.0 },
     "scenes": [
@@ -78,6 +78,9 @@ Cấu trúc bắt buộc:
 ```
 
 - `provider`: luôn là `omnivoice` (TTS local duy nhất; không cần `voiceId`/API key).
+- Branding mặc định cho mọi video: `try.ai.lov3`; slogan/tagline và CTA cuối video: `Đam mê AI`; `primary_url`: `try.ai.lov3`. Không đưa tên `AI Coding` vào nội dung hiển thị hoặc `voiceText`.
+- Giọng đọc mặc định: nam. Màu thương hiệu: xanh navy `#071A33`; màu phụ: trắng `#FFFFFF`. Ưu tiên hai màu này cho các slot màu tùy chỉnh của template.
+- Không hiển thị tên miền bài viết, URL hoặc các dòng dẫn nguồn kiểu `Nguồn: ...` trong scene. Vẫn giữ `metadata.source` để truy vết nội bộ. Với các slot như `footer_right` hoặc `source`, dùng chuỗi rỗng hoặc nội dung branding `try.ai.lov3` thay vì tên miền nguồn.
 - Mỗi scene: `{ id, type, voiceText, templateId, inputs }`. `inputs` khớp slot trong CATALOG.
 - scenes[0].type = `hook`; scene cuối .type = `outro` (templateId = `frame-logo-outro`).
 - **8–12 scene**; tổng voiceText ~270–360 từ (~90–120s) — **GIỮ NGUYÊN tổng thời lượng**, chỉ chia nhỏ ra NHIỀU scene hơn cho nhịp nhanh, đỡ nhàm. Mỗi body scene **~25–40 từ** (mỗi scene chỉ 1 ý duy nhất — nếu 1 đoạn có 2 ý thì TÁCH thành 2 scene thay vì nhồi vào 1). Mục tiêu: mỗi scene xuất hiện trên màn hình chỉ ~6–10s rồi chuyển cảnh.

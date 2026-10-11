@@ -8,8 +8,8 @@ export interface OmniVoiceOpts {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-// OmniVoice local TTS: POST { text } → audio/mpeg bytes.
-// No API key or voice ID — configured server-side.
+// OmniVoice local TTS through its OpenAI-compatible endpoint.
+// The local server runs without an API key by default.
 // srtOutPath is ignored (no subtitle support).
 export class OmniVoiceClient implements TtsClient {
   constructor(private cfg: OmniVoiceOpts) {}
@@ -21,9 +21,17 @@ export class OmniVoiceClient implements TtsClient {
     for (let attempt = 0; attempt < 4; attempt++) {
       try {
         const resp = await axios.post<ArrayBuffer>(
-          `${this.cfg.endpoint}/tts`,
-          { text },
-          { headers: { "Content-Type": "application/json", Accept: "audio/mpeg" }, responseType: "arraybuffer", timeout: 60000 },
+          `${this.cfg.endpoint}/v1/audio/speech`,
+          {
+            model: "omnivoice",
+            input: text,
+            voice: "clone:try_ai_lov3_female_news",
+            language: "vi",
+            response_format: "mp3",
+            num_step: 16,
+            seed: 20261010,
+          },
+          { headers: { "Content-Type": "application/json", Accept: "audio/mpeg" }, responseType: "arraybuffer", timeout: 300000 },
         );
         await writeFile(audioOutPath, Buffer.from(resp.data));
         return;

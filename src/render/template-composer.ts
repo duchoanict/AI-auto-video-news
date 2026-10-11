@@ -111,14 +111,14 @@ if (
     import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
     const inputs = {
-        kicker: "AI Coding",
+        kicker: "try.ai.lov3",
         date: "12 · 06 · 2026",
         figure: "5.5",
         headline: ["GPT 5.5", "ra mắt.", "Mạnh nhất."],
         standfirst:
             "OpenAI vừa công bố mô hình mạnh nhất từ trước tới nay — nhanh hơn, rẻ hơn, hiểu tiếng Việt tốt hơn.",
-        footer_left: "AI Coding",
-        footer_right: "https://aicodingvn.vercel.app/",
+        footer_left: "try.ai.lov3",
+        footer_right: "try.ai.lov3",
     };
     (async () => {
         await composeTemplate({

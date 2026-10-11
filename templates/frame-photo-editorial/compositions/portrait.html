@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #020c1a; }
+    body { font-family: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; color: #fff; background: #020c1a; }
+    .photo { position: absolute; inset: -40px; background-position: center; background-size: cover; transform: scale(1.02); animation: drift 5s ease-out both; }
+    .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,12,26,.86) 0%, rgba(2,12,26,.22) 35%, rgba(2,12,26,.12) 60%, rgba(2,12,26,.88) 100%); }
+    .wash { position: absolute; inset: 0; background: linear-gradient(110deg, rgba(7,26,51,.28), transparent 55%, rgba(34,211,238,.08)); }
+    .top { position: absolute; left: 70px; right: 70px; top: 76px; display: flex; align-items: center; gap: 18px; font-size: 24px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; }
+    .dot { width: 13px; height: 13px; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 22px #22d3ee; }
+    .copy { position: absolute; left: 70px; right: 70px; bottom: 105px; }
+    .rule { width: 110px; height: 6px; border-radius: 6px; background: linear-gradient(90deg,#22d3ee,#fff); margin-bottom: 26px; }
+    h1 { margin: 0 0 24px; max-width: 940px; font-size: 86px; line-height: 1.03; letter-spacing: -3px; text-wrap: balance; text-shadow: 0 4px 24px rgba(0,0,0,.55); }
+    p { margin: 0; max-width: 890px; font-size: 34px; line-height: 1.42; font-weight: 500; color: rgba(255,255,255,.9); text-shadow: 0 3px 16px rgba(0,0,0,.7); }
+    .brand { position: absolute; right: 70px; bottom: 46px; font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+    @keyframes drift { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.10) translate3d(-9px,-7px,0); } }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920" data-composition-variables='{"image":"lonely-cafe.png","kicker":"GÓC NHÌN","headline":"Kết nối nhiều, vẫn cô đơn","caption":"Không phải cuộc trò chuyện nào cũng tạo ra cảm giác được thấu hiểu.","brand":"try.ai.lov3"}'>
+    <div class="photo"></div><div class="shade"></div><div class="wash"></div>
+    <div class="top"><span class="dot"></span><span class="kicker"></span></div>
+    <div class="copy"><div class="rule"></div><h1></h1><p></p></div>
+    <div class="brand"></div>
+  </div>
+  <script>
+    (function () {
+      var v = window.__hyperframes && typeof window.__hyperframes.getVariables === "function" ? window.__hyperframes.getVariables() : {};
+      var set = function (s, x) { var e = document.querySelector(s); if (e && x != null) e.textContent = String(x); };
+      var photo = document.querySelector(".photo");
+      var safeImage = String(v.image || "lonely-cafe.png").replace(/[^a-zA-Z0-9._-]/g, "");
+      photo.style.backgroundImage = "url('../assets/" + safeImage + "')";
+      set(".kicker", v.kicker_photo || v.kicker); set("h1", v.headline_photo || v.headline); set("p", v.caption); set(".brand", v.brand || "try.ai.lov3");
+    })();
+    window.__timelines = window.__timelines || {};
+    window.__timelines.main = { pause: function(){}, seek: function(){}, paused: function(){ return true; } };
+  </script>
+</body>
+</html>

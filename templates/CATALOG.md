@@ -225,6 +225,18 @@ Each side (`left` / `right`) object:
 
 ## Adding a template
 
+## frame-photo-editorial
+
+**Role:** body / photographic editorial scene. Full-bleed vertical image with a navy readability overlay, subtle push-in motion, headline, caption, and channel mark.
+
+| slot       | type   | limit | notes                                      |
+| ---------- | ------ | ----- | ------------------------------------------ |
+| `image`    | string | 64    | filename inside the template assets folder |
+| `kicker`   | string | 24    | small uppercase context label              |
+| `headline` | string | 60    | concise two- or three-line headline        |
+| `caption`  | string | 140   | supporting sentence                        |
+| `brand`    | string | 24    | channel name                               |
+
 Drop a folder `templates/<id>/` with `index.html` (16:9 root, `data-composition-id`),
 `compositions/portrait.html` (9:16), `hyperframes.json`, `meta.json`, and a
 `NOTICE.md` if vendored. Use a Vietnamese-capable font stack (Alfa Slab One /

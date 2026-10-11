@@ -79,11 +79,14 @@
                 height: 200px;
                 animation: glow 0.8s ease-out 1.1s both;
             }
-            .logo-wrap svg {
+            .logo-wrap > img {
                 position: absolute;
                 inset: 0;
                 width: 100%;
                 height: 100%;
+                object-fit: contain;
+                border-radius: 50%;
+                animation: pieceIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
             }
             .piece {
                 transform-box: fill-box;
@@ -207,44 +210,19 @@
             data-duration="5"
             data-width="1920"
             data-height="1080"
-            data-composition-variables='{"brand_name":"AI Coding","tagline":"Bản tin mới mỗi ngày","primary_url":"https://aicodingvn.vercel.app/"}'
+            data-composition-variables='{"brand_name":"try.ai.lov3","tagline":"Đam mê AI","primary_url":"try.ai.lov3"}'
         >
             <div class="ribbon"></div>
 
             <div class="logo-wrap">
-                <svg viewBox="0 0 140 140" fill="none">
-                    <!-- "</>" code glyph, assembled from 3 pieces -->
-                    <path
-                        class="piece"
-                        d="M50 34 L22 70 L50 106"
-                        stroke="#7c5cff"
-                        stroke-width="14"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        class="piece"
-                        d="M80 26 L60 114"
-                        stroke="#f5f5f7"
-                        stroke-width="14"
-                        stroke-linecap="round"
-                    />
-                    <path
-                        class="piece"
-                        d="M90 34 L118 70 L90 106"
-                        stroke="#7c5cff"
-                        stroke-width="14"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
+                <img src="../assets/logo.png" alt="try.ai.lov3" />
             </div>
 
             <h1 class="brand"><span class="shimmer"></span></h1>
             <p class="tagline"></p>
             <div class="meta"><span class="meta-url"></span></div>
 
-            <div class="corner left">AI Coding</div>
+            <div class="corner left">try.ai.lov3</div>
             <div class="corner right">Bye Các Con Vợ</div>
         </div>
 
